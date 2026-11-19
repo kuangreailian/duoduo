@@ -93,7 +93,8 @@ private val Red = Color(0xFFCD3538)
 
 @Composable
 fun OverlayPanel() {
-    val snap by ActiveSession.snapshot.collectAsStateWithLifecycle()
+    val snapState by ActiveSession.snapshot.collectAsStateWithLifecycle()
+    val snap = snapState
     val started by ActiveSession.countingStarted.collectAsStateWithLifecycle()
     val selectedPlayer by ActiveSession.selectedPlayer.collectAsStateWithLifecycle()
     val order = ActiveSession.config?.gameType?.displayOrder() ?: GameType.DADAA.displayOrder()
@@ -179,7 +180,7 @@ fun OverlayPanel() {
                 TakeEggInline(onConfirm = { fc, r -> ActiveSession.takeEgg(fc, r); takeEggOpen = false })
             }
 
-            if (snap != null && !started) {
+            if (snap == null) {
                 Spacer(Modifier.height(4.dp))
                 Button(
                     onClick = ActiveSession::startCounting,
