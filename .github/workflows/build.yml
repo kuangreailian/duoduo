@@ -22,7 +22,7 @@ jobs:
         run: |
           export GRADLE_USER_HOME="$RUNNER_TEMP/gradle-home"
           gradle wrapper --gradle-version 8.9 --no-daemon --console-plain
-          ./gradlew :app:assembleDebug --no-daemon --console-plain --stacktrace
+          ./gradlew :app:assembleDebug --no-daemon --stacktrace
 
       - name: 上传 APK
         uses: actions/upload-artifact@v4
