@@ -18,13 +18,11 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: 编译 Debug APK
+      - name: 生成包装器并编译 APK
         run: |
           export GRADLE_USER_HOME="$RUNNER_TEMP/gradle-home"
-          export ANDROID_SDK_ROOT="$RUNNER_TEMP/android-sdk"
-          yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$ANDROID_SDK_ROOT" --licenses >/dev/null 2>&1 || true
-          gradle wrapper --gradle-version 8.9 --no-daemon --console=plain
-          ./gradlew :app:assembleDebug --no-daemon --console=plain --stacktrace
+          gradle wrapper --gradle-version 8.9 --no-daemon --console-plain
+          ./gradlew :app:assembleDebug --no-daemon --console-plain --stacktrace
 
       - name: 上传 APK
         uses: actions/upload-artifact@v4
