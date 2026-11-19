@@ -21,7 +21,7 @@ jobs:
       - name: 生成包装器并编译 APK
         run: |
           export GRADLE_USER_HOME="$RUNNER_TEMP/gradle-home"
-          gradle wrapper --gradle-version 8.9 --no-daemon --console-plain
+          gradle wrapper --gradle-version 8.9 --no-daemon
           ./gradlew :app:assembleDebug --no-daemon --stacktrace
 
       - name: 上传 APK
