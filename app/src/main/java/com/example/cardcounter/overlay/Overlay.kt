@@ -9,6 +9,7 @@ import android.view.Gravity
 import android.view.View
 import android.view.WindowManager
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectDragGestures
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.horizontalScroll
@@ -229,7 +230,7 @@ private fun TakeEggInline(onConfirm: (Int, Rank) -> Unit) {
         Row {
             listOf(2, 3, 4, 5).forEach { n ->
                 Text(
-                    text = "$n个4",
+                    text = "${n}个4",
                     modifier = Modifier.clickable { fourCount = n }.padding(4.dp),
                     color = if (fourCount == n) Green else Color.Black,
                     fontSize = 12.sp
