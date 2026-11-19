@@ -9,13 +9,20 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun HomeScreen(
     onStart: () -> Unit,
-    onOpenTuning: () -> Unit
+    onOpenTuning: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
-    Column(Modifier.fillMaxSize().padding(24.dp), verticalArrangement = Arrangement.spacedBy(16.dp)) {
+    Column(
+        modifier = modifier.fillMaxSize().padding(24.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
         Text("扑克记牌器", style = MaterialTheme.typography.headlineMedium)
         Text("打大A记牌器")
 
-        Card(Modifier.fillMaxWidth(), onClick = onStart) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = onStart
+        ) {
             Column(Modifier.padding(20.dp)) {
                 Text("打大A", style = MaterialTheme.typography.titleLarge)
                 Spacer(Modifier.height(4.dp))
